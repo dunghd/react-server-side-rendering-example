@@ -1,19 +1,19 @@
-import { REQUEST_APPS,  RECEIVE_APPS } from './actions';
+import { REQUEST_APPS, RECEIVE_APPS } from "./actions";
 
-function apps( state = {isFetching: false, apps: []}, action) {
+function apps(state = { isFetching: false, apps: [] }, action) {
   switch (action.type) {
     case REQUEST_APPS:
       return Object.assign({}, state, {
-        isFetching: true
+        isFetching: true,
       });
     case RECEIVE_APPS:
       return Object.assign({}, state, {
         isFetching: false,
-        apps: action.apps
+        apps: action.apps,
       });
     default:
-      return state
+      return state;
   }
 }
 
-export default apps
+export default apps;

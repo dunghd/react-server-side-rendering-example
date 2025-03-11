@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchAppsIfNeeded } from '../redux/actions';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchAppsIfNeeded } from "../redux/actions";
 
-import Card from './card';
+import Card from "./card";
 class App extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
