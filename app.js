@@ -23,7 +23,6 @@ let initialState = {
 // server rendered home page
 app.get('/', (req, res) => {
   const { preloadedState, content } = ssr(initialState);
-  console.log(content);
   const response = template('Server Rendered Page', preloadedState, content);
   res.setHeader('Cache-Control', 'assets, max-age=604800');
   res.send(response);
@@ -32,7 +31,6 @@ app.get('/', (req, res) => {
 // Pure client side rendered page
 app.get('/client', (req, res) => {
   let response = template('Client Side Rendered page');
-  debugger;
   res.setHeader('Cache-Control', 'assets, max-age=604800');
   res.send(response);
 });

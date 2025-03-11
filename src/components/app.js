@@ -1,33 +1,31 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { fetchAppsIfNeeded } from "../redux/actions";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAppsIfNeeded } from '../redux/actions';
 
-import Card from "./card";
-class App extends Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
+import Card from './card';
+import Counter from './counter';
+
+const App = () => {
+  const dispatch = useDispatch();
+  const { isFetching, apps } = useSelector((state) => ({
+    isFetching: state.isFetching,
+    apps: state.apps,
+  }));
+
+  useEffect(() => {
     dispatch(fetchAppsIfNeeded());
-  }
+  }, [dispatch]);
 
-  render() {
-    const { isFetching, apps } = this.props;
-    const totalapps = apps.length;
+  const totalApps = apps.length;
 
-    debugger;
+  return (
+    <>
+      {isFetching && totalApps === 0 && <h2>Loading...</h2>}
+      {!isFetching && totalApps === 0 && <h2>Empty.</h2>}
+      <Counter />
+      <Card apps={apps} totalApps={totalApps} />
+    </>
+  );
+};
 
-    return (
-      <>
-        {isFetching && totalapps === 0 && <h2>Loading...</h2>}
-        {!isFetching && totalapps === 0 && <h2>Empty.</h2>}
-        <Card apps={apps} totalapps={totalapps} />
-      </>
-    );
-  }
-}
-function mapStateToProps({ isFetching, apps }) {
-  return {
-    isFetching,
-    apps,
-  };
-}
-export default connect(mapStateToProps)(App);
+export default App;

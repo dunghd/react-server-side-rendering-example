@@ -1,8 +1,8 @@
-import React from "react";
-import { hydrate } from "react-dom";
-import { Provider } from "react-redux";
-import configureStore from "./redux/configureStore";
-import App from "./components/app";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import configureStore from './redux/configureStore';
+import App from './components/app';
 
 // Read the state sent with markup
 const state = window.__STATE__;
@@ -19,9 +19,16 @@ const store = configureStore(state);
  * react comments to identify elements and more.
  */
 
-hydrate(
+ReactDOM.hydrate(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.querySelector("#app"),
+  document.querySelector('#app'),
 );
+
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <App />
+//   </Provider>,
+//   document.querySelector('#app'),
+// );

@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-const CardLeft = ({ appno, totalapps, img }) => (
+const CardLeft = ({ appNo, totalApps, img }) => (
   <div className="col-left">
     <div className="app-no">
-      <span className="current">{`0${appno}`}</span>
+      <span className="current">{`0${appNo}`}</span>
       <span className="connector">of </span>
       <br />
-      <span className="total">{`0${totalapps}`}</span>
+      <span className="total">{`0${totalApps}`}</span>
     </div>
     <img
       className="app-icon"
