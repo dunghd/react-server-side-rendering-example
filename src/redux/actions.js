@@ -1,5 +1,5 @@
-export const REQUEST_APPS = "REQUEST_APPS";
-export const RECEIVE_APPS = "RECEIVE_APPS";
+export const REQUEST_APPS = 'REQUEST_APPS';
+export const RECEIVE_APPS = 'RECEIVE_APPS';
 
 function requestApps() {
   return {
@@ -15,11 +15,13 @@ function receiveApps(json) {
 }
 
 function fetchApps() {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(requestApps());
-    return fetch(`assets/data.json`)
-      .then((response) => response.json())
-      .then((json) => dispatch(receiveApps(json)));
+    const response = await fetch(`assets/data.json`);
+    const json = await new Promise((resolve) =>
+      setTimeout(() => resolve(response.json()), 3000),
+    );
+    return dispatch(receiveApps(json));
   };
 }
 

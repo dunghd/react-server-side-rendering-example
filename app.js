@@ -23,7 +23,7 @@ app.disable('x-powered-by');
 
 let initialState = {
   isFetching: false,
-  apps: data,
+  apps: [],
 };
 
 // server rendered home page

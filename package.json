@@ -6,7 +6,7 @@
   "scripts": {
     "start-hypernova": "npx babel-node hypernova-server.js",
     "start-app": "npx babel-node app.js",
-    "start": "concurrently \"npm run start-hypernova\" \"npm run start-app\"",
+    "start": "webpack --config webpack.config.js && concurrently \"npm run start-hypernova\" \"npm run start-app\"",
     "build": "webpack --config webpack.config.js",
     "format": "prettier --write \"src/**/*.{js,jsx}\""
   },

@@ -23,7 +23,6 @@ export default function template(title, initialState = {}, content = '') {
                       ${content}
                    </div>
                 </div>
-
                   ${scripts}
               </body>
               `;
